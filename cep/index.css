@@ -1,1 +1,159 @@
+<!DOCTYPE html>
 
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Consulta CEP</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <div class="container">
+        <!-- ---------------------------------
+             TÍTULO
+        ---------------------------------- -->
+        <h1>Consulta CEP</h1>
+
+        <!-- ---------------------------------
+             CAMPO DO CEP
+        ---------------------------------- -->
+
+        <div class="campo">
+
+            <label for="cep">
+                CEP
+            </label>
+
+            <input
+                type="text"
+                id="cep"
+                placeholder="Digite o CEP"
+                maxlength="9"
+                autocomplete="off"
+                inputmode="numeric"
+            >
+        </div>
+
+        <!-- ---------------------------------
+             BOTÃO
+        ---------------------------------- -->
+
+        <button id="botaoBuscar">
+            Buscar CEP
+        </button>
+
+        <!-- ---------------------------------
+             ÁREA DE MENSAGENS
+        ---------------------------------- -->
+
+        <div id="mensagem"></div>
+
+        <!-- ---------------------------------
+             ÁREA DOS RESULTADOS
+        ---------------------------------- -->
+
+        <div class="resultados" id="resultados" style="display: none;">
+
+            <!-- ---------------------------------
+                 LOGRADOURO
+            ---------------------------------- -->
+
+            <div class="campo campo-logradouro">
+
+                <label for="logradouro">
+
+                    Logradouro
+
+                </label>
+
+                <input
+                    type="text"
+                    id="logradouro"
+                    readonly
+                >
+            </div>
+
+            <!-- ---------------------------------
+                 BAIRRO
+            ---------------------------------- -->
+
+            <div class="campo">
+
+                <label for="bairro">
+
+                    Bairro
+
+                </label>
+
+                <input
+                    type="text"
+                    id="bairro"
+                    readonly
+                >
+
+            </div>
+            <!-- ---------------------------------
+                 CIDADE
+            ---------------------------------- -->
+
+            <div class="campo">
+
+                <label for="cidade">
+
+                    Cidade
+
+                </label>
+
+                <input
+                    type="text"
+                    id="cidade"
+                    readonly
+                >
+
+            </div>
+
+            <!-- ---------------------------------
+                 ESTADO
+            ---------------------------------- -->
+
+            <div class="campo">
+
+                <label for="estado">
+
+                    Estado
+
+                </label>
+
+                <input
+                    type="text"
+                    id="estado"
+                    readonly
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ---------------------------------
+         ARQUIVO JAVASCRIPT
+    ---------------------------------- -->
+
+    <script src="api.js"></script>
+
+
+</body>
+
+</html>
