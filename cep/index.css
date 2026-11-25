@@ -1,159 +1,463 @@
-<!DOCTYPE html>
+/* ---------------------------------
+   CONFIGURAÇÃO GERAL
+--------------------------------- */
 
-<html lang="pt-BR">
+* {
 
-<head>
+    box-sizing: border-box;
 
-    <meta charset="UTF-8">
+    margin: 0;
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    padding: 0;
 
-    <title>Consulta CEP</title>
-
-    <link rel="stylesheet" href="style.css">
-
-</head>
-
-
-<body>
-
-    <div class="container">
-        <!-- ---------------------------------
-             TÍTULO
-        ---------------------------------- -->
-        <h1>Consulta CEP</h1>
-
-        <!-- ---------------------------------
-             CAMPO DO CEP
-        ---------------------------------- -->
-
-        <div class="campo">
-
-            <label for="cep">
-                CEP
-            </label>
-
-            <input
-                type="text"
-                id="cep"
-                placeholder="Digite o CEP"
-                maxlength="9"
-                autocomplete="off"
-                inputmode="numeric"
-            >
-        </div>
-
-        <!-- ---------------------------------
-             BOTÃO
-        ---------------------------------- -->
-
-        <button id="botaoBuscar">
-            Buscar CEP
-        </button>
-
-        <!-- ---------------------------------
-             ÁREA DE MENSAGENS
-        ---------------------------------- -->
-
-        <div id="mensagem"></div>
-
-        <!-- ---------------------------------
-             ÁREA DOS RESULTADOS
-        ---------------------------------- -->
-
-        <div class="resultados" id="resultados" style="display: none;">
-
-            <!-- ---------------------------------
-                 LOGRADOURO
-            ---------------------------------- -->
-
-            <div class="campo campo-logradouro">
-
-                <label for="logradouro">
-
-                    Logradouro
-
-                </label>
-
-                <input
-                    type="text"
-                    id="logradouro"
-                    readonly
-                >
-            </div>
-
-            <!-- ---------------------------------
-                 BAIRRO
-            ---------------------------------- -->
-
-            <div class="campo">
-
-                <label for="bairro">
-
-                    Bairro
-
-                </label>
-
-                <input
-                    type="text"
-                    id="bairro"
-                    readonly
-                >
-
-            </div>
-            <!-- ---------------------------------
-                 CIDADE
-            ---------------------------------- -->
-
-            <div class="campo">
-
-                <label for="cidade">
-
-                    Cidade
-
-                </label>
-
-                <input
-                    type="text"
-                    id="cidade"
-                    readonly
-                >
-
-            </div>
-
-            <!-- ---------------------------------
-                 ESTADO
-            ---------------------------------- -->
-
-            <div class="campo">
-
-                <label for="estado">
-
-                    Estado
-
-                </label>
-
-                <input
-                    type="text"
-                    id="estado"
-                    readonly
-                >
-
-            </div>
-
-        </div>
-
-    </div>
+}
 
 
 
-    <!-- ---------------------------------
-         ARQUIVO JAVASCRIPT
-    ---------------------------------- -->
+/* ---------------------------------
+   CORPO DA PÁGINA
+--------------------------------- */
 
-    <script src="api.js"></script>
+body {
+
+    font-family: Arial, Helvetica, sans-serif;
 
 
-</body>
+    background: linear-gradient(
+        135deg,
+        #e9eef5,
+        #f7f9fc
+    );
 
-</html>
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+
+    min-height: 100vh;
+
+
+    padding: 20px;
+
+}
+
+
+
+/* ---------------------------------
+   CONTAINER PRINCIPAL
+--------------------------------- */
+
+.container {
+
+    background-color: #ffffff;
+
+
+    width: 100%;
+
+    max-width: 600px;
+
+
+    padding: 40px;
+
+
+    border-radius: 16px;
+
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.12);
+
+
+    border: 1px solid #e5e7eb;
+
+}
+
+
+
+/* ---------------------------------
+   TÍTULO
+--------------------------------- */
+
+h1 {
+
+    text-align: center;
+
+
+    color: #1f2937;
+
+
+    font-size: 30px;
+
+
+    margin-bottom: 35px;
+
+}
+
+
+
+/* ---------------------------------
+   GRUPO DE CADA CAMPO
+--------------------------------- */
+
+.campo {
+
+    margin-bottom: 18px;
+
+}
+
+
+
+/* ---------------------------------
+   LABEL DOS CAMPOS
+--------------------------------- */
+
+label {
+
+    display: block;
+
+
+    margin-bottom: 7px;
+
+
+    font-weight: bold;
+
+
+    color: #374151;
+
+
+    font-size: 14px;
+
+}
+
+
+
+/* ---------------------------------
+   CAMPOS DE TEXTO
+--------------------------------- */
+
+input {
+
+    width: 100%;
+
+
+    min-height: 48px;
+
+
+    padding: 12px 14px;
+
+
+    border: 1px solid #d1d5db;
+
+
+    border-radius: 8px;
+
+
+    font-size: 16px;
+
+
+    background-color: #ffffff;
+
+
+    color: #111827;
+
+
+    outline: none;
+
+
+    transition: 0.3s;
+
+}
+
+
+
+/* ---------------------------------
+   EFEITO QUANDO O CAMPO É CLICADO
+--------------------------------- */
+
+input:focus {
+
+    border-color: #2563eb;
+
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.15);
+
+}
+
+
+
+/* ---------------------------------
+   CAMPOS SOMENTE LEITURA
+--------------------------------- */
+
+input[readonly] {
+
+    background-color: #f3f4f6;
+
+
+    color: #374151;
+
+
+    cursor: default;
+
+}
+
+
+
+/* ---------------------------------
+   BOTÃO
+--------------------------------- */
+
+button {
+
+    width: 100%;
+
+
+    padding: 14px;
+
+
+    border: none;
+
+
+    border-radius: 8px;
+
+
+    background-color: #2563eb;
+
+
+    color: white;
+
+
+    font-size: 16px;
+
+
+    font-weight: bold;
+
+
+    cursor: pointer;
+
+
+    margin-bottom: 20px;
+
+
+    transition: 0.3s;
+
+}
+
+
+
+/* ---------------------------------
+   EFEITO AO PASSAR O MOUSE
+--------------------------------- */
+
+button:hover {
+
+    background-color: #1d4ed8;
+
+
+    transform: translateY(-1px);
+
+
+    box-shadow:
+        0 5px 12px rgba(37, 99, 235, 0.25);
+
+}
+
+
+
+/* ---------------------------------
+   EFEITO AO CLICAR NO BOTÃO
+--------------------------------- */
+
+button:active {
+
+    transform: translateY(0);
+
+}
+
+
+
+/* ---------------------------------
+   ÁREA DAS MENSAGENS
+--------------------------------- */
+
+#mensagem {
+
+    text-align: center;
+
+
+    margin-bottom: 20px;
+
+
+    min-height: 20px;
+
+
+    font-weight: bold;
+
+
+    font-size: 14px;
+
+}
+
+
+
+/* ---------------------------------
+   MENSAGEM DE ERRO
+--------------------------------- */
+
+.erro {
+
+    color: #dc2626;
+
+
+    background-color: #fee2e2;
+
+
+    border: 1px solid #fecaca;
+
+
+    padding: 10px;
+
+
+    border-radius: 7px;
+
+}
+
+
+
+/* ---------------------------------
+   MENSAGEM DE SUCESSO
+--------------------------------- */
+
+.sucesso {
+
+    color: #15803d;
+
+
+    background-color: #dcfce7;
+
+
+    border: 1px solid #bbf7d0;
+
+
+    padding: 10px;
+
+
+    border-radius: 7px;
+
+}
+
+
+
+/* ---------------------------------
+   ÁREA DOS RESULTADOS
+--------------------------------- */
+
+.resultados {
+
+    display: grid;
+
+
+    grid-template-columns: 1fr 1fr;
+
+
+    gap: 18px;
+
+}
+
+
+
+/* ---------------------------------
+   LOGRADOURO OCUPANDO TODA A LINHA
+--------------------------------- */
+
+.campo-logradouro {
+
+    grid-column: 1 / -1;
+
+}
+
+
+
+/* ---------------------------------
+   CAMPOS DENTRO DOS RESULTADOS
+--------------------------------- */
+
+.resultados .campo {
+
+    margin-bottom: 0;
+
+}
+
+
+
+/* ---------------------------------
+   CAMPOS DE RESULTADO MAIORES
+--------------------------------- */
+
+.resultados input {
+
+    min-height: 52px;
+
+
+    font-size: 16px;
+
+
+    padding: 14px;
+
+}
+
+
+
+/* ---------------------------------
+   RESPONSIVIDADE PARA CELULAR
+--------------------------------- */
+
+@media (max-width: 600px) {
+
+
+    .container {
+
+        padding: 25px 20px;
+
+    }
+
+
+    h1 {
+
+        font-size: 24px;
+
+    }
+
+
+    input {
+
+        font-size: 15px;
+
+    }
+
+
+    button {
+
+        font-size: 15px;
+
+    }
+
+
+    .resultados {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .campo-logradouro {
+
+        grid-column: auto;
+
+    }
+
+
+}
